@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isAlertShown = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button("Show Alert") {
+            isAlertShown = true
+        }.alert("Important Message", isPresented: $isAlertShown) {
+            Button("Cancel", role: .cancel) {}
+            Button("Delete", role: .destructive) {}
+        } message: {
+            Text("Please choose")
+        }
     }
 }
 
